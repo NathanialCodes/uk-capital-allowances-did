@@ -1,0 +1,8 @@
+pandas
+numpy
+openpyxl
+matplotlib
+scipy
+statsmodels
+linearmodels
+pyfixest
