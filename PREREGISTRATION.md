@@ -204,3 +204,23 @@ None of these is a reason not to publish. Each is a specific, reportable finding
 Any deviation from the above is recorded here with a date and a reason, in a commit separate from the analysis it affects.
 
 *(none at time of commit)*
+
+**2026-08-07 - Rule 2 test statistic**
+
+Rule 2 specified a Wald test on all 21 pre-treatment interaction coefficients.
+This is infeasible: with G=20 clusters the cluster-robust covariance matrix has
+rank 18, so a joint test of 21 restrictions is not defined. The quarterly event
+study produced a Wald statistic of 7.8e14 from an effectively singular matrix.
+
+Amendment: the pre-trends test is conducted on annual bins rather than
+individual quarters. Quarters are grouped by calendar year, with 2020Q1 and
+2021Q1 pooled as the omitted base period, giving 5 pre-treatment lead
+coefficients and 6 post-treatment lags. This is within the rank of the
+covariance matrix.
+
+The quarterly event study is retained as a figure, since plotting individual
+coefficients requires no joint test. Only the Wald test uses annual bins.
+
+The thresholds in Rule 2 (p>=0.10 pass, 0.05-0.10 caveat, <0.05 fail) are
+unchanged. The amendment changes the granularity of the test, not its
+decision rule.
