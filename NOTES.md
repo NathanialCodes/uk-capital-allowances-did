@@ -125,3 +125,17 @@ and Construction (0.485) sit inside the manufacturing range. `treat` is
 therefore close to a manufacturing indicator interacted with timing.
 - Both preregistered decision rules now fail (Rule 2 p=0.0481, Rule 1 sign flip).
 This is s12 condition 3. It is the headline finding, per s11.
+
+
+## 2026-08-13 - wild cluster bootstrap (bootstrap.py, prereg s8)
+
+- B=9999 Rademacher, null imposed, seed 42. Implemented via FWL: two-way demean
+once, then one-variable OLS inside the loop. 9999 reps in ~1s.
+- Bootstrap p = 0.71 vs analytic p = 0.696. No material difference. The primary
+inference confirms the headline null.
+- Bootstrap t distribution 2.5/97.5 pct approx -1.88/+1.83 vs normal +/-1.96 -
+NARROWER, not wider. The small-cluster bias the bootstrap was preregistered to
+guard against is a non-factor here.
+- Not applied to the Rule 2 Wald test (different procedure, joint restrictions).
+Note as a limitation.
+
