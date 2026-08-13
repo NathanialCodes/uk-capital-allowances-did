@@ -107,3 +107,21 @@ test.
 prominence, the Rule 2 failure, and the correction to the prior report's claim
 that engineering and vehicles was the most machinery-intensive subsector
 (measured: 4th of 7 on stocks, 6th of 7 on flows).
+
+
+## 2026-08-13 - Rule 1, non-manufacturing subsample (rule1.py, prereg s9)
+
+- Full sample: n=840, G=20, beta = -0.3977, SE 1.0168, p = 0.696.
+- Non-manufacturing only: n=546, G=13, beta = +0.1239, SE 3.1800, p = 0.969.
+- Sign flips. Distance 0.51 full-sample SE. RULE 1 VERDICT: FAIL - the estimate
+is not separable from the manufacturing-specific decline.
+- The non-mfg SE is 3.1x the full-sample SE. With 13 clusters the estimate is so
+imprecise the sign is close to arbitrary. Report both facts: the sign flipped,
+AND the subsample cannot pin the sign down. The second is not a rescue for the
+first - it is independent evidence the design lacks power at this level.
+- Mechanism: exposure overlaps only narrowly. Mfg 0.342-0.701 (mean 0.501,
+sd 0.137); non-mfg 0.035-0.486 (mean 0.228, sd 0.148). Only Agriculture (0.486)
+and Construction (0.485) sit inside the manufacturing range. `treat` is
+therefore close to a manufacturing indicator interacted with timing.
+- Both preregistered decision rules now fail (Rule 2 p=0.0481, Rule 1 sign flip).
+This is s12 condition 3. It is the headline finding, per s11.
