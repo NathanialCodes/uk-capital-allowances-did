@@ -139,3 +139,19 @@ guard against is a non-factor here.
 - Not applied to the Rule 2 Wald test (different procedure, joint restrictions).
 Note as a limitation.
 
+
+## 2026-08-13 - robustness table (robustness.py, prereg s10)
+
+- Nothing significant in any specification. p ranges 0.202 to 0.975.
+- Item 2 flips sign: gross stocks +0.1285 vs net -0.3977. Rule 3 as written
+names flow-vs-stock disagreement (flow agrees: -0.4382), so Rule 3 is not
+formally triggered - but the substance of the concern is. Report as:
+beta is indistinguishable from zero everywhere AND its sign is unstable to
+defensible definitional choices.
+- Net and gross exposure correlate 0.971. A 0.97 correlation flipping the sign
+shows how little identifying variation there is - the estimate is driven by
+the 3% where the measures disagree.
+- Item 3 (full sample 1997-2026, n=2339) gives the largest magnitude at -2.07,
+still p=0.333. Item 5 (drop 2021Q1 too) gives -0.036, essentially zero.
+Point estimate ranges -2.07 to +0.13 across specs.
+- Outstanding: items 9 (terciles) and 11 (pyfixest cross-check).
