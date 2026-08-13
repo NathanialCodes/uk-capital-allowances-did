@@ -1,7 +1,7 @@
 """Build quarterly allowance NPV series. See PREREGISTRATION.md s5."""
 import pandas as pd
 
-START, END = "2015Q1", "2026Q1"
+START, END = "1997Q1", "2026Q1"
 BASE_R = 0.05
 
 REGIMES = [
