@@ -155,3 +155,44 @@ the 3% where the measures disagree.
 still p=0.333. Item 5 (drop 2021Q1 too) gives -0.036, essentially zero.
 Point estimate ranges -2.07 to +0.13 across specs.
 - Outstanding: items 9 (terciles) and 11 (pyfixest cross-check).
+
+
+## 2026-08-18 - post hoc specification curve (spec_curve.py, prereg s13)
+
+- NOT a robustness check. Built for the explainer app. The growth-rate outcome
+was never preregistered; s4 fixes the outcome as log real investment.
+Amendment pushed to s13 before these results were published.
+- 48 specifications: 4 samples x 3 exposure measures x 2 outcome forms x
+2 treatment forms.
+- 24 of 48 significant at 5%. The split is perfect: growth 24/24 significant,
+log level 0/24, min p on levels 0.0932. Median beta growth -58.8, levels -0.87.
+- Every significant result is wrong-signed. Most significant is -106.98,
+p = 0.000136 (drop to 2021Q1, gross stock, growth, continuous).
+- WHY the growth specs are significant and meaningless: regressing the growth
+RATE on the treatment LEVEL tests whether treated industries grow faster in
+every quarter the policy is on, i.e. a permanently higher growth rate.
+Allowance theory predicts a LEVEL shift - investment jumps, then growth
+returns to normal. Under House-Shapiro intertemporal substitution a temporary
+incentive gives a growth blip then payback, which from a record 2021 peak is
+exactly a negative average growth differential. Significant, correctly
+computed, testing a hypothesis nobody holds.
+- CONTIGUITY FIX: diff() operates on adjacent rows, and after dropping
+2020Q2-Q4 the row adjacent to 2021Q1 is 2020Q1 - a four-quarter change
+labelled as one quarter. Mean growth at 2021Q1 was -11.9% vs +0.4% elsewhere,
+20 contaminated observations. Fixed by checking (q - prev_q).n == 1 and
+setting non-contiguous rows to NaN. The fix made the growth result STRONGER
+(p 0.0004 -> 0.0001), so the significance is not an artefact of the bug.
+- Net and gross exposure produce an IDENTICAL above/below-median split of all
+20 industries, so those two binary specifications are literally the same
+regression. Flow reshuffles six industries (Construction, Chemicals, Mining
+move down; Distribution, Other services, Financial intermediation move up).
+Binarising discards exactly the variation on which net and gross disagree -
+which is why they flip the sign under continuous treatment but agree here.
+- Preregistered row reproduces: beta = -0.397692, se 1.016821, p = 0.695821,
+n = 840. Confirms the grid estimates the same thing as estimate.py.
+- The point for the app: someone who had gone specification-hunting would have
+found 24 significant results at p < 0.05 and could have written up
+"allowances reduced investment growth in exposed industries". The
+preregistration is what stops that, and the git history proves the outcome
+variable was fixed on 2 August before any of this existed.
+
