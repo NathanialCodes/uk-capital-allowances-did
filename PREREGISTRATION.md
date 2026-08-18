@@ -224,3 +224,15 @@ coefficients requires no joint test. Only the Wald test uses annual bins.
 The thresholds in Rule 2 (p>=0.10 pass, 0.05-0.10 caveat, <0.05 fail) are
 unchanged. The amendment changes the granularity of the test, not its
 decision rule.
+
+**2026-08-18 - Specification curve added post hoc for exposition**
+
+A specification curve of 48 estimates is added to support a public explainer app. It crosses four sample windows, three exposure measures, two outcome forms (log level, quarter-on-quarter growth) and two treatment forms (continuous, binary above/below median).
+
+This is POST HOC and outside the s10 robustness list. In particular, the growth-rate outcome was never preregistered: s4 fixes the outcome as the log of real investment, and that remains the specification of record.
+
+Results from the curve are reported as an illustration of researcher degrees of freedom, not as findings. No estimate from the curve revises the conclusion
+in s9 or s11. The primary estimate remains beta = -0.398, p = 0.696, with both decision rules failed.
+
+I have already computed the curve before writing this amendment, so its content is known: 23 of 48 specifications are significant at 5%, all of them growth-rate forms, all wrong-signed. The amendment is recorded before the results are published rather than before they were computed, and that sequence is stated
+here rather than implied otherwise.
