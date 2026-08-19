@@ -58,7 +58,12 @@ So the conclusion is about identification rather than about tax policy. Industry
 
 Two things support reading the null as substantive rather than merely underpowered. The OBR's November 2023 retrospective concluded that the policy did not appear to boost business investment overall. And 82% of firms in the Bank of England's Decision Maker Panel reported no change to capital expenditure plans after full expensing was made permanent.
 
-Identifying this properly would need firm-level data around the £1m Annual Investment Allowance threshold, where the marginal treatment actually bites. HMRC estimates roughly 7,000 companies were affected.
+Identifying this properly would need firm-level data. HMRC notes that businesses
+claiming at least £1 million of capital allowances make up 1% of claimants but
+account for around 80% of all capital allowance claimed (HMRC Research Report
+782, footnote 1, citing Corporation Tax Statistics 2022). Industry-level exposure
+cannot distinguish that 1% from the rest, so the coefficient is at best an
+intention-to-treat on industries whose treated share is unobserved.
 
 ## A correction to the prior report
 
@@ -99,6 +104,13 @@ All three ONS source files are committed in `data/raw/` with their release dates
 ## Limitations
 
 Industry-level data cannot identify firms above the £1m AIA threshold, where the marginal treatment is concentrated. The coefficient is at best an intention-to-treat on industries whose treated share is unobserved.
+
+The super-deduction and full expensing were available only to companies within
+the charge to Corporation Tax (Finance Bill, Resolution 9 Clause 9, Amendment 2,
+para 5). ONS business investment covers unincorporated businesses as well, which
+were never eligible and could only use the Annual Investment Allowance. The
+outcome therefore includes investment that could not respond to the treatment,
+and the share of such investment varies by industry.
 
 Parallel trends is rejected, so β is reported as an association and not as a causal effect.
 

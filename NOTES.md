@@ -196,3 +196,11 @@ found 24 significant results at p < 0.05 and could have written up
 preregistration is what stops that, and the git history proves the outcome
 variable was fixed on 2 August before any of this existed.
 
+
+## 2026-08-19 - discount rate clarification for streamlit app
+
+- Discount rate / timing sensitivity re-estimated on the primary spec: p ranges
+0.680 to 0.703 across r in {.03,.05,.07} x {continuous, discrete}, beta stays
+negative throughout (-0.346 to -0.519). Note the discount rate affects only the
+pre-2021 NPV, since FYA has nothing to discount, so this is not a pure rescaling
+of the treatment variable and the p-value does move slightly.

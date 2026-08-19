@@ -96,7 +96,15 @@ Dwellings and cultivated biological resources are excluded from the denominator:
 
 **Aggregation rule.** Where an industry maps to several ONS codes (e.g. metals = C24 + C25), pound values are pooled across codes and the ratio taken once — ratio of sums, not mean of ratios. For metals these give 0.6506 and 0.7048 respectively; the mean-of-ratios version wrongly weights a small code equally with one holding 2.5× the capital.
 
-**Transport equipment is excluded from the numerator.** Cars do not qualify for the super-deduction or full expensing, and assets provided for leasing are excluded from both. Including transport equipment moves transportation and storage from 19th to 9th of 20 on exposure (0.051 → 0.355), assigning high exposure to an industry that is substantially untreated. This is a classification decision with a material effect and is recorded as such.
+**Transport equipment is excluded from the numerator.** Exclusions from the
+super-deduction and the 50% special rate first-year allowance include
+expenditure on cars, second-hand assets, connected party transactions and
+expenditure on assets for leasing (Finance Bill, Resolution 9 Clause 9,
+Amendment 2, para 8; the leasing exclusion was subsequently modified to admit
+background plant and machinery in leased buildings). Including transport
+equipment moves transportation and storage from 19th to 9th of 20 on exposure
+(0.051 -> 0.355), assigning high exposure to an industry that is substantially
+untreated.
 
 **Why stocks, not investment flows.** Two measurement grounds, decided before any correlation was computed. (i) In the annual GFCF-by-industry-and-asset file, ICT is suppressed in 49.2% of industry-years 2015–19 and *selectively* so — entirely suppressed for chemicals, textiles and metals, available for information and communication — which would build industry-correlated error into the treatment variable. The equivalent figure in the capital stock file is 3.3%. (ii) A flow-based share shares its denominator with the outcome, so transitory investment spikes in the baseline window generate mean reversion biasing the interaction negative.
 
