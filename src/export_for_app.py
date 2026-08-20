@@ -154,6 +154,19 @@ out["spec_curve"] = {
     "min_p_level": round(float(curve[curve["outcome"] == "log level"]["p"].min()), 4),
 }
 
+power_df = pd.read_csv("output/tables/power.csv")
+out["power"] = {
+    "effect_pct": list(power_df["effect_pct"]),
+    "power": list(power_df["power"].round(3)),
+    "mde": 8.0,
+    "benchmarks": [
+        {"label": "Maffini, Xing and Devereux (2019), UK", "pct": 2.3, "power": 0.10},
+        {"label": "DMP net-additional, Budget 2021", "pct": 4.1, "power": 0.27},
+        {"label": "OBR (2021) ex ante", "pct": 10.0, "power": 0.95},
+        {"label": "Zwick and Mahon (2017), US", "pct": 10.4, "power": 0.96},
+    ],
+}
+
 out["meta"] = {
     "vintages": {"business_investment": "2026-06-30",
                  "capital_stocks": "2025-11-27", "gfcf": "2025-11-03"},

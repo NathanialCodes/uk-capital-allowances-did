@@ -204,3 +204,25 @@ variable was fixed on 2 August before any of this existed.
 negative throughout (-0.346 to -0.519). Note the discount rate affects only the
 pre-2021 NPV, since FYA has nothing to discount, so this is not a pure rescaling
 of the treatment variable and the p-value does move slightly.
+
+## 2026-08-20 - power analysis (power.py, post hoc, prereg s13)
+
+- MDE at 80% power, 5% two-sided: beta 2.849 (normal) / 3.004 (t19), which is
+7.6% / 8.1% in differential terms. Simulation gives 8.0%. Analytical and
+simulated agree to 0.1pp.
+- Power against literature benchmarks: Maffini et al 2.3% -> 0.10;
+DMP net-additional 4.1% -> 0.27; OBR ex ante 10% -> 0.95;
+Zwick & Mahon 10.4% -> 0.96, 16.9% -> 1.00.
+- Simulation size at true effect 0 is 0.031 against a nominal 0.05. The test is
+conservative with 20 clusters, which independently confirms the earlier wild
+bootstrap finding that the analytic SEs were not understating uncertainty.
+- Simulation method: two-way demean via FWL, impose beta_true, resample residuals
+by cluster with Rademacher weights, 2000 draws, seed 42. Preserves within-
+industry correlation, unlike an iid residual draw.
+- THE KEY REFRAME: the null is the expected output of an underpowered design, not
+evidence of no effect. Knowable ex ante from the panel dimensions. Not doing
+this before estimation is the biggest methodological gap in the project.
+- Caveat to state every time: benchmarks are firm-level/aggregate effects, this
+estimate is an industry-level differential between mean-exposure groups. Not
+the same estimand.
+

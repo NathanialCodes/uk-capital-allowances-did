@@ -3,7 +3,7 @@
 import plotly.graph_objects as go
 import streamlit as st
 
-from theme import GREY, RED, quarter_to_date, style
+from theme import GREY, RED, BLUE, quarter_to_date, style
 
 
 def render(data):
@@ -48,6 +48,51 @@ measured precisely. It is an effect the data cannot measure at all. A wild clust
 bootstrap, which I preregistered because twenty clusters is few enough for standard
 errors to be unreliable, gives p = {r['bootstrap_p']} against the {r['p']:.3f} above.
 It confirms the result rather than rescuing it.
+""")
+
+    st.markdown("### Could this design have found an effect?")
+
+    st.markdown("""
+Before asking whether the estimate is causal, there is a prior question I should have
+asked before running anything: what size of effect was this design capable of detecting?
+
+The answer is worked out by imposing known effects on the panel and counting how often
+the regression recovers them.
+""")
+
+    pw = data["power"]
+    fig_p = go.Figure()
+    fig_p.add_trace(go.Scatter(x=pw["effect_pct"], y=pw["power"], mode="lines",
+                               line=dict(color=RED, width=2.5), name="Power",
+                               hovertemplate="effect %{x:.0f}%<br>power %{y:.2f}<extra></extra>"))
+    fig_p.add_hline(y=0.8, line=dict(color=GREY, width=1, dash="dash"))
+    fig_p.add_trace(go.Scatter(
+        x=[b["pct"] for b in pw["benchmarks"]], y=[b["power"] for b in pw["benchmarks"]],
+        mode="markers+text", marker=dict(color=BLUE, size=9),
+        text=[b["label"].split(" (")[0] for b in pw["benchmarks"]],
+        textposition="bottom right", textfont=dict(size=10, color=BLUE),
+        name="Literature estimates", hovertemplate="%{text}<br>power %{y:.2f}<extra></extra>"))
+    fig_p.update_xaxes(title="True differential effect of the April 2021 reform (%)")
+    fig_p.update_yaxes(title="Probability of detecting it", range=[0, 1])
+    st.plotly_chart(style(fig_p, height=420), use_container_width=True)
+
+    st.markdown(f"""
+The design reaches the conventional 80% threshold only at around
+**{pw['mde']:.0f}%**. Below that it is mostly guessing.
+
+The two UK-relevant estimates in the literature sit well below that line. Maffini, Xing
+and Devereux, using UK corporation tax returns, put the effect at 2.1 to 2.5 percentage
+points, where this design has a 10% chance of finding it. The Decision Maker Panel
+figure of 4.1 percentage points gives a 27% chance.
+
+So the null on this page is close to what you would expect even if the allowances worked
+exactly as the UK evidence says. It is not evidence that they did nothing.
+
+Two caveats. This uses the standard error the regression actually produced, so it
+describes the design after the fact rather than predicting it beforehand, which is what a
+preregistered power calculation would have done. And the benchmarks are firm-level
+effects while this is an industry-level differential between average-exposure groups, so
+they are related quantities rather than the same one.
 """)
 
     st.markdown("### Testing the assumption the design depends on")

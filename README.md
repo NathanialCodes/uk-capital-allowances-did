@@ -50,7 +50,23 @@ The event study shows why. Pre-treatment coefficients drift upward toward the 20
 
 ## What it means
 
-The estimate is indistinguishable from zero under every specification, and its sign is not stable to defensible changes in how exposure is measured. That is not a precise null. It is a coefficient the data cannot pin down.
+The estimate is indistinguishable from zero under every specification, and its
+sign is not stable to defensible changes in how exposure is measured. But the
+first thing to say about the null is that the design could not have found the
+effect the literature predicts.
+
+A post hoc power analysis puts the minimum detectable differential at about 8%.
+Against the UK evidence cited in my earlier report, power is 0.10 for Maffini,
+Xing and Devereux (2.1 to 2.5 percentage points) and 0.27 for the Decision Maker
+Panel net-additional figure (4.1 percentage points). Only effects at or above the
+OBR's ex ante 10% estimate would have been reliably detectable.
+
+So the null is what an underpowered design returns. It is not evidence that
+capital allowances did nothing, and it should not be read that way. This was
+knowable from the panel dimensions before any estimation, and not doing the
+calculation in advance is the clearest methodological gap in the project.
+
+![Power curve](output/figures/power_curve.png)
 
 The reason is visible in the exposure variable. Manufacturing industries span 0.342 to 0.701 on plant and machinery intensity; non-manufacturing spans 0.035 to 0.486. Only agriculture and construction sit inside the manufacturing range. Treatment intensity is therefore close to a manufacturing indicator interacted with timing, which is why removing manufacturing removes most of the identifying variation.
 
@@ -115,6 +131,11 @@ and the share of such investment varies by industry.
 Parallel trends is rejected, so β is reported as an association and not as a causal effect.
 
 ONS deflators for machinery, transport and ICT are built from import price indices of materials and fuels rather than product price indices, which is a known weakness during the 2022 energy shock.
+
+With 20 clusters and quarterly industry data, the design reaches 80% power only
+against differentials of about 8%. Firm-level studies report effects between 2
+and 17 percentage points, so a large part of the plausible range is invisible to
+this design. A power analysis should have been preregistered.
 
 Industry series in this dataset are seasonally adjusted and then aggregated, whereas the headline ONS Business Investment release adjusts asset-level series first. The panel therefore does not reconcile exactly to the headline release.
 
