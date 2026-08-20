@@ -244,3 +244,32 @@ in s9 or s11. The primary estimate remains beta = -0.398, p = 0.696, with both d
 
 I have already computed the curve before writing this amendment, so its content is known: 23 of 48 specifications are significant at 5%, all of them growth-rate forms, all wrong-signed. The amendment is recorded before the results are published rather than before they were computed, and that sequence is stated
 here rather than implied otherwise.
+
+
+**2026-08-20 - Post hoc power analysis**
+
+A power analysis is added. It was not preregistered, and it should have been:
+section 7 fixed the specification without asking what effect sizes that
+specification could detect. That is an omission in the original plan, not a
+discretionary addition.
+
+Method: the minimum detectable effect is computed analytically from the realised
+clustered standard error at 80% power and 5% two-sided, under both a normal and
+a t(G-1) reference distribution. It is then verified by simulation, imposing
+known effects on the estimated panel and resampling residuals by cluster with
+Rademacher weights, 2,000 draws.
+
+Result: the design reaches 80% power only against differentials of about 8%.
+Power against the two UK-relevant benchmarks in the prior report is 0.10
+(Maffini, Xing and Devereux, 2.3%) and 0.27 (DMP net-additional, 4.1%).
+
+This is post hoc and uses the realised standard error, so it is an ex post
+characterisation of the design's precision rather than an ex ante calculation.
+It does not revise the estimate in section 9 or the conclusion in section 11. It
+changes how the null should be read: as the expected output of an underpowered
+design, rather than as evidence that the allowance channel is absent.
+
+The benchmarks are firm-level or aggregate effects and the estimate here is an
+industry-level differential between mean-exposure groups. They are not the same
+quantity. The comparison is reported because it is the only external evidence on
+magnitude available, not because the estimands coincide.
