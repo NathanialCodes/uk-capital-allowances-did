@@ -9,7 +9,7 @@ import streamlit as st
 APP_DIR = Path(__file__).parent
 sys.path.insert(0, str(APP_DIR))
 
-from sections import exposure, policy, puzzle
+from sections import exposure, policy, puzzle, result, spec_curve
 
 st.set_page_config(page_title="UK Capital Allowances", page_icon="📊",
                    layout="centered", initial_sidebar_state="expanded")
@@ -27,6 +27,8 @@ PAGES = {
     "1. The puzzle": puzzle,
     "2. Measuring the policy": policy,
     "3. Measuring exposure": exposure,
+    "4. The result": result,
+    "5. Try to find an effect": spec_curve,
 }
 
 with st.sidebar:
